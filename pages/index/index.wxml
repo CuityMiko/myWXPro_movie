@@ -1,0 +1,80 @@
+<view class='container'>
+    <view class='banner'>
+        <swiper indicator-dots="true" autoplay="true" circular="true" interval="3000" duration="1000">
+            <block wx:for="{{banners}}" wx:key="{{item.id}}">
+                <swiper-item>
+                    <image src="{{item.image}}" mode="aspectFill" class="slide-image"/>
+                </swiper-item>
+            </block>
+        </swiper>
+    </view>
+    <view class="board">
+        <navigator url="../movielist/movielist?type=in_theaters" hover-class="none">
+            <view class="board-title">
+                <text style="color:#336633;font-weight:bolder;">正在热映</text>
+                <view class="more-info">
+                    <text>更多</text>
+                    <image class="more-img" src="/images/arrowright.png" mode="aspectFill"/>
+                </view>
+            </view>
+        </navigator>
+        <scroll-view scroll-x="true" style="width:100%;">
+            <view class='board-info'>
+                <block wx:for="{{in_theaters_movielist}}" wx:key="{{item.id}}">
+                    <view class='board-item'>
+                        <image class="board-img" src="{{item.images.small}}" mode="aspectFill"/>
+                        <view class="item-title">
+                            <text>{{item.title}}</text>
+                        </view>
+                    </view>
+                </block>
+            </view>
+        </scroll-view>
+    </view>
+    <view class="board">
+        <navigator url="../movielist/movielist?type=coming_soon" hover-class="none">
+            <view class="board-title">
+                <text style="color:#336633;font-weight:bolder;">即将上映</text>
+                <view class="more-info">
+                    <text>更多</text>
+                    <image class="more-img" src="/images/arrowright.png" mode="aspectFill"/>
+                </view>
+            </view>
+        </navigator>
+        <scroll-view scroll-x="true" style="width:100%;">
+            <view class='board-info'>
+                <block wx:for="{{coming_soon_movielist}}" wx:key="{{item.id}}">
+                    <view class='board-item'>
+                        <image class="board-img" src="{{item.images.small}}" mode="aspectFill"/>
+                        <view class="item-title">
+                            <text>{{item.title}}</text>
+                        </view>
+                    </view>
+                </block>
+            </view>
+        </scroll-view>
+    </view>
+    <view class="board">
+        <navigator url="../movielist/movielist?type=top250" hover-class="none">
+            <view class="board-title">
+                <text style="color:#336633;font-weight:bolder;">精选榜单</text>
+                <view class="more-info">
+                    <text>更多</text>
+                    <image class="more-img" src="/images/arrowright.png" mode="aspectFill"/>
+                </view>
+            </view>
+        </navigator>
+        <scroll-view scroll-x="true" style="width:100%;">
+            <view class='board-info'>
+                <block wx:for="{{top250_movielist}}" wx:key="{{item.id}}">
+                    <view class='board-item'>
+                        <image class="board-img" src="{{item.images.small}}" mode="aspectFill"/>
+                        <view class="item-title">
+                            <text>{{item.title}}</text>
+                        </view>
+                    </view>
+                </block>
+            </view>
+        </scroll-view>
+    </view>
+</view>

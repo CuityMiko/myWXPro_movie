@@ -1,0 +1,5 @@
+<view>
+    <view class="section">
+        <input placeholder="这是一个可以自动聚焦的input" auto-focus/>
+    </view>
+</view>
