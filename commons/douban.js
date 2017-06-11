@@ -40,7 +40,7 @@ export default class DouBanApi{
         let bmplocation=BDMap.getLocation();
         return new Promise((resolve, reject)=>{
             bmplocation.then((locat)=>{
-                let _city= that.convertcityname(locat.city);
+                let _city= that.convertcityname(locat.city); 
                 wx.request({
                     url: _url,
                     data:{

@@ -1,7 +1,5 @@
 // 配置文件
 import Config from './commons/config.js'
-//豆瓣API
-import DouBanApi from './commons/douban.js'
 
 App({
 
@@ -11,17 +9,6 @@ App({
   onLaunch: function () {
     wx.showLoading({
       title:'正在加载中...'
-    })
-    let _that=this;
-    // 向导页面图片使用
-    let _getMovieList=DouBanApi.GetMovieList("coming_soon",1,5);
-    _getMovieList.then((res)=>{
-      res.data.subjects.forEach((item)=>{
-        _that.config.guidepages.push({
-          id:item.id,
-          image:item.images.large
-        })
-      })
     })
   },
 

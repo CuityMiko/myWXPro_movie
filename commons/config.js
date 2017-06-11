@@ -1,6 +1,5 @@
 let _AppConfig={
-        serverurl:'http://api.douban.com/v2/movie/',
-        guidepages:[],
+        serverurl:'https://api.douban.com/v2/movie/',
         paged:{
             pagesize:10
         },
@@ -10,6 +9,6 @@ let _AppConfig={
 module.exports={
     AppConfig:_AppConfig,
     BmapAPIURL:{
-        getLocationUrl:`http://api.map.baidu.com/location/ip?ak=${_AppConfig.bmapserverkey}&coor=bd09ll`
+        getLocationUrl:`https://api.map.baidu.com/location/ip?ak=${_AppConfig.bmapserverkey}&coor=bd09ll`
     }
 }

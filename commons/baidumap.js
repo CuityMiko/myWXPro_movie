@@ -29,7 +29,7 @@ export default class BDMap{
     }
 
     /**
-     * 定位当前城市天气(ak有问题，待确认)
+     * 定位当前城市天气
      */
     static getCurrentWeather(){
         // 新建百度地图对象 
@@ -41,6 +41,7 @@ export default class BDMap{
             // 发起weather请求 
             BMap.weather({ 
                 success: (data)=>{
+                    console.log('ssss')
                     console.log(data);
                     var weatherData = data.currentWeather[0]; 
                     let locationdata={
@@ -54,6 +55,7 @@ export default class BDMap{
                     resolve(locationdata);
                 },
                 fail: (err)=>{
+                    console.log('44444')
                     reject(err);
                 }
             }); 

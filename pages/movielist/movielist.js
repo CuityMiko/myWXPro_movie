@@ -1,4 +1,4 @@
-import BaiduMap from '../../commons/baidumap.js'
+import DouBanApi from '../../commons/douban.js'
 const app=getApp();
 Page({
 
@@ -15,10 +15,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let bdpromise= BaiduMap.getLocation();
-    bdpromise.then((data)=>{
-      console.log(data);
-    })
+    this.getmovielist(options.type)
   },
 
   /**
@@ -80,29 +77,18 @@ Page({
     wx.showLoading({
       title:'正在加载中...'
     })
-    wx.request({
-      url: `${app.config.serverurl}${type}`,
-      data:{
-        "start": _start,
-        "count": app.config.paged.pagesize,
-        "city": '杭州'
-      },
-      header: {
-        'content-type': 'json'
-      },
-      success: function (res) {
-        let _pageindex=this.data.pageindex+1;
-        _that.setData({
-          coming_soon_movielist:res.data.subjects,
-          type:type,
-          pageindex:_pageindex
-        })
-        wx.hideLoading()
-      },
-      fail:function(err){
-        console.log(err);
-        wx.hideLoading();
-      }
+    let _getMovieList=DouBanApi.GetMovieList(type,this.data.pageindex);
+    _getMovieList.then((res)=>{
+      let _pageindex=this.data.pageindex+1;
+      _that.setData({
+        coming_soon_movielist:res.data.subjects,
+        type:type,
+        pageindex:_pageindex
+      })
+      wx.hideLoading()
+    }).catch((err)=>{
+      console.log(err);
+      wx.hideLoading();
     })
   }
 })

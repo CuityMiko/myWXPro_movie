@@ -1,7 +1,7 @@
 {
     "pages":[
-        "pages/guidepage/guidepage",
         "pages/index/index",
+        "pages/guidepage/guidepage",
         "pages/movielist/movielist",
         "pages/profile/profile",
         "pages/search/search"

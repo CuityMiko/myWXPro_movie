@@ -1,3 +1,6 @@
+//豆瓣API
+import DouBanApi from '../../commons/douban.js'
+
 let app=getApp();
 Page({
 
@@ -5,14 +8,31 @@ Page({
    * 页面的初始数据
    */
   data: {
-    guidepages:app.config.guidepages
+    guidepages:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.hideLoading();
+    let _that=this;
+    // 向导页面图片使用
+    let _getMovieList=DouBanApi.GetMovieList("coming_soon",1,5);
+    _getMovieList.then((res)=>{
+      let _newdata=[];
+      res.data.subjects.forEach((item)=>{
+        _newdata.push({
+          id:item.id,
+          image:item.images.large
+        })
+      })
+      _that.setData({
+        guidepages:_newdata
+      })
+      wx.hideLoading();
+    }).catch((err)=>{
+      wx.hideLoading();
+    })
   },
 
   /**
