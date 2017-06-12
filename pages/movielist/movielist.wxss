@@ -29,8 +29,8 @@ scroll-view{
 }
 
 .movieimage{
-    width: 150rpx;
-    height: 200rpx;
+    width: 180rpx;
+    height: 270rpx;
     margin-right: 20rpx;
 }
 
