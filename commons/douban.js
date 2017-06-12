@@ -28,8 +28,9 @@ export default class DouBanApi{
         let _url=Config.AppConfig.serverurl+type;
         let _count=0;
         let _q="";
-        if(typeof(count).toString()=="string")
+        if(isNaN(count)){
             _q=count;
+        }
         else{
             _count=count;
             _q=search;
