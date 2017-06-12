@@ -1,0 +1,80 @@
+.content{
+    display: flex;
+    flex-direction: column;
+}
+.movie-image{
+    background-color: black;
+    display: flex;
+    align-items: center; /*定义body的元素垂直居中*/
+    justify-content: center; /*定义body的里的元素水平居中*/
+}
+
+.movie-content{
+    /*border: 1px solid #D3D3D3;*/
+    padding: 9rpx;
+    margin: 15rpx;
+    /*border-radius:9rpx;*/
+}
+
+.movie-titleinfo{
+    display: flex;
+    flex-direction: column;
+}
+
+.itemjianjie{
+    font-size: 28rpx;
+    margin-top: 15rpx;
+    color: #696969;
+}
+
+.movie-title text{
+    font-size: 40rpx;
+    font-weight: bolder;
+}
+
+.movie-header{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+}
+
+.movie-rating{
+    width: 150rpx;
+    height: 100rpx;
+    border: 1px solid #D3D3D3;
+    border-radius:10rpx;
+    padding: 12rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.movie-summary{
+    margin-top: 30rpx;
+    padding: 12rpx;
+    border-top: 1px solid #D3D3D3;
+}
+
+.summary{
+    margin: 15rpx;
+    font-size: 33rpx;
+    line-height: 50rpx;
+}
+
+.movie-directors{
+    margin: 15rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content:flex-start;
+}
+.avatars{
+    margin: 9rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+}
+.avatars image{
+    width: 150rpx;
+    height: 200rpx;
+}

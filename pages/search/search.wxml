@@ -1,0 +1,20 @@
+<import src="../common/movie_list.wxml"/>
+<view>
+    <view class="movietitle">
+        <input placeholder="请输入要搜索的内容" auto-focus bindconfirm="tosearch"/>
+    </view>
+    <view class="movieresult">
+        <text wx:if="{{total>0}}">共搜到{{total}}条关于“{{searchtxt}}”的结果</text>
+        <text wx:elif="{{total==0}}">共搜到{{total}}条关于“{{searchtxt}}”的结果</text>
+        <text wx:else></text>
+    </view>
+    <view class="movielist">
+        <scroll-view scroll-y="true" lower-threshold="3" scroll-with-animation="true" enable-back-to-top="true" bindscrolltolower="toMore">
+            <template is="tmpmovielist" wx:for="{{movielist}}" wx:key="{{item.id}}" data="{{ item }}" />
+            <view class="tips">
+                <view wx:if="{{loading}}"><image src="/images/loading.gif" mode="aspectFill"/><text>玩命的加载中...</text></view>
+                <view wx:if="{{!hasMore}}"><text>没有更多内容了</text></view>
+            </view>
+        </scroll-view>
+    </view>
+</view>

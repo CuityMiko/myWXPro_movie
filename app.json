@@ -4,6 +4,7 @@
         "pages/guidepage/guidepage",
         "pages/movielist/movielist",
         "pages/profile/profile",
+        "pages/moviedetail/moviedetail",
         "pages/search/search"
     ],
     "window": {
@@ -18,7 +19,7 @@
         
         "backgroundTextStyle": "light",
         
-        "enablePullDownRefresh": false
+        "enablePullDownRefresh": true
     },
     "tabBar": {
         "color": "#999999",

@@ -1,0 +1,92 @@
+.movietitle{
+    border-bottom: 1px solid #D3D3D3;
+    padding: 20rpx 40rpx;
+    color: #006400;
+    font-size: 38rpx;
+    text-align: center;
+}
+
+.movieresult{
+    padding: 20rpx 40rpx;
+    color: #006400;
+    font-size: 30rpx;
+    text-align: left;
+}
+
+.movielist{
+    display:flex;
+    flex-direction: column;
+}
+
+scroll-view{
+    height: 1500rpx;
+}
+
+.movieitem{
+    flex:1;
+    cursor: pointer;
+}
+
+.item{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    padding: 24rpx;
+    border-bottom: 1px solid #eee;
+}
+
+.movieimage{
+    width: 150rpx;
+    height: 200rpx;
+    margin-right: 20rpx;
+}
+
+.iteminfo{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.itemtitle{
+    font-size: 35rpx;
+    font-weight: bolder;
+}
+
+.itemjianjie{
+    font-size: 27rpx;
+    margin-top: 15rpx;
+    color: #696969;
+}
+
+.itembtn{
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    width: 50rpx;
+    vertical-align: middle;
+    height: 200rpx;
+    justify-content:center;
+}
+
+.itembtn image{
+    width: 30rpx;
+    height: 30rpx;
+}
+
+.tips {
+  font-size: 28rpx;
+  text-align: center;
+  padding: 50rpx;
+  color: #ccc;
+}
+
+.tips image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 20rpx;
+}
+
+.tips image,
+.tips text {
+  vertical-align: middle;
+}

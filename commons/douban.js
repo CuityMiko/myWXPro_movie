@@ -28,7 +28,7 @@ export default class DouBanApi{
         let _url=Config.AppConfig.serverurl+type;
         let _count=0;
         let _q="";
-        if(typeof(count)==String)
+        if(typeof(count).toString()=="string")
             _q=count;
         else{
             _count=count;
@@ -46,7 +46,8 @@ export default class DouBanApi{
                     data:{
                         "start": _start,
                         "count": _count,
-                        "city": _city
+                        "city": _city,
+                        "q":_q
                     },
                     header: {
                         'content-type': 'json'

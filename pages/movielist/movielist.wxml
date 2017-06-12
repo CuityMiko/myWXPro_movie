@@ -1,5 +1,15 @@
+<import src="../common/movie_list.wxml"/>
 <view>
-    <view class="section">
-        <input placeholder="这是一个可以自动聚焦的input" auto-focus/>
+    <view class="movietitle">
+        <text>{{title}}</text>
+    </view>
+    <view class="movielist">
+        <scroll-view scroll-y="true" lower-threshold="3" scroll-with-animation="true" enable-back-to-top="true" bindscrolltolower="toMore">
+            <template is="tmpmovielist" wx:for="{{movielist}}" wx:key="{{item.id}}" data="{{ item }}" />
+            <view class="tips">
+                <view wx:if="{{loading}}"><image src="/images/loading.gif" mode="aspectFill"/><text>玩命的加载中...</text></view>
+                <view wx:if="{{!hasMore}}"><text>没有更多内容了</text></view>
+            </view>
+        </scroll-view>
     </view>
 </view>

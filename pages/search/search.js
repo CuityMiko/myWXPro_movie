@@ -1,17 +1,49 @@
+import DouBanApi from '../../commons/douban.js'
+import Config from '../../commons/config.js'
+const app=getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    
+    type:"search",
+    movielist:[],
+    pageindex:1,
+    title:'',
+    hasMore:true,
+    pagecount:0,
+    loading:false,
+    searchtxt:'',
+    total:-1,
+  },
+
+  /**
+   * 自定义事件
+   */
+  toMore:function(e){
+    if(!this.data.loading){
+      let _pageindex=this.data.pageindex+1;
+      if(_pageindex<=this.data.pagecount){
+        this.setData({
+          hasMore:true,
+          loading:true
+        })
+        this.getmovielist(this.data.type,_pageindex);
+      }
+      else{
+        this.setData({
+          hasMore:false
+        })
+      }
+    }
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    wx.hideLoading();
   },
 
   /**
@@ -61,5 +93,66 @@ Page({
    */
   onShareAppMessage: function () {
     
+  },
+
+  /**
+   * 自定义事件
+   */
+   tosearch(e){
+     if(e.detail.value.trim().length>0){
+        this.setData({
+          searchtxt:e.detail.value,
+          movielist:[],
+          total:-1
+        })
+        this.getmovielist(this.data.type,1);
+     }else{
+       wx.showModal({
+         title:"请输入要搜索的内容",
+         showCancel:false
+       })
+     }
+   },
+
+  /**
+   * 自定义方法
+   */
+  //获取电影列表
+  getmovielist(type,pageindex){
+    let _start=(pageindex-1)*app.config.paged.pagesize;
+    let _that=this;
+    wx.showLoading({
+      title:'正在加载中...'
+    })
+    let _getMovieList=DouBanApi.GetMovieList(type,pageindex,_that.data.searchtxt);
+    _getMovieList.then((res)=>{
+      // 计算总页数
+      let _pagecount=Math.ceil(res.data.total/Config.AppConfig.paged.pagesize);
+      if(res.data.subjects.length>0){
+        _that.setData({
+          movielist:_that.data.movielist.concat(res.data.subjects),
+          type:type,
+          pageindex:pageindex,
+          title:res.data.title,
+          pagecount:_pagecount,
+          hasMore:true,
+          loading:false,
+          total:res.data.total
+        })
+      }else{
+        _that.setData({
+          type:type,
+          pageindex:pageindex,
+          title:res.data.title,
+          pagecount:_pagecount,
+          hasMore:false,
+          loading:false
+        })
+      }
+      wx.hideLoading()
+    }).catch((err)=>{
+      console.log(err);
+      wx.hideLoading();
+    })
   }
 })

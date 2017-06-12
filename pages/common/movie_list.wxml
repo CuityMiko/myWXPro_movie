@@ -1,0 +1,29 @@
+<template name="tmpmovielist">
+    <navigator hover-class="none" url="../moviedetail/moviedetail?id={{item.id}}">
+        <view class="movieitem">
+            <view class="item">
+                <image class="movieimage" src="{{item.images.small}}" mode="aspectFill" />
+                <view class="iteminfo">
+                    <text class="itemtitle"> {{item.title}} </text>
+                    <text class="itemjianjie"> 类型：{{item.genres}} </text>
+                    <view class="itemjianjie">
+                        <text> 导演：</text>
+                        <text wx:for="{{item.directors}}" wx:key="{{item.name}}" wx:for-index="index">{{item.name}} </text>
+                    </view>
+                    <view class="itemjianjie">
+                        <text> 主演：</text>
+                        <text wx:for="{{item.casts}}" wx:key="{{item.name}}" wx:for-index="index">{{item.name}} </text>
+                    </view>
+                    <view class="itemjianjie">
+                        <text> 评分：</text>
+                        <text style="color:red" wx:if="{{item.rating.average>0}}">{{item.rating.average}}分</text>
+                        <text style="color:#D3D3D3" wx:else> 暂无评分 </text>
+                    </view>
+                </view>
+                <view class="itembtn">
+                    <image class="more-img" src="/images/arrowright.png" mode="aspectFill"/>
+                </view>
+            </view>
+        </view>
+    </navigator>
+</template>

@@ -1,0 +1,58 @@
+<view class="content">
+    <view class="movie-image">
+        <image src="{{movie.images.large}}" mode="aspectFill" />
+    </view>
+    <view class="movie-content">
+        <view class="movie-header">
+            <view class="movie-titleinfo">
+                <view class="movie-title">
+                    <text>{{movie.title}}</text>
+                </view>
+                <view>
+                    <text class="itemjianjie">类型：{{movie.genres}}</text>
+                </view>
+                <view>
+                    <text class="itemjianjie">国家：{{movie.countries}}    </text>
+                    <text class="itemjianjie">  上映时间：{{movie.year}}年 </text>
+                </view>
+            </view>
+            <view class="movie-rating">
+                <text style="font-size:30rpx;">综合评分</text>
+                <text wx:if="{{movie.rating.average>0}}" style="color:red;margin-top: 19rpx;font-weight: bolder;">{{movie.rating.average}}分</text>
+                <text wx:else style="color:#D3D3D3;margin-top: 19rpx;">暂无评分</text>
+            </view>
+        </view>
+        <view class="movie-summary">
+            <view><text style="color:#D3D3D3;font-size: 24rpx;">剧情简介</text></view>
+            <view class="summary">
+                {{movie.summary}}
+            </view>
+        </view>
+        <view>
+            <view><text style="color:#D3D3D3;font-size: 24rpx;">导 演</text></view>
+            <view class="movie-directors">
+                <block wx:for="{{movie.directors}}" wx:key="{{item.id}}">
+                    <view class="avatars">
+                        <image src="{{item.avatars.medium}}" mode="aspectFill"/>
+                        <view>
+                            <text style="font-size: 24rpx;">{{item.name}}</text>
+                        </view>
+                    </view>
+                </block>
+            </view>
+        </view>
+        <view>
+            <view><text style="color:#D3D3D3;font-size: 24rpx;">主 演</text></view>
+            <view class="movie-directors">
+                <block wx:for="{{movie.casts}}" wx:key="{{item.id}}">
+                    <view class="avatars">
+                        <image src="{{item.avatars.medium}}" mode="aspectFill"/>
+                        <view>
+                            <text style="font-size: 24rpx;">{{item.name}}</text>
+                        </view>
+                    </view>
+                </block>
+            </view>
+        </view>
+    </view>
+</view>
