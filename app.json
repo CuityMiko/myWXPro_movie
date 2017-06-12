@@ -19,7 +19,7 @@
         
         "backgroundTextStyle": "light",
         
-        "enablePullDownRefresh": true
+        "enablePullDownRefresh": false
     },
     "tabBar": {
         "color": "#999999",
